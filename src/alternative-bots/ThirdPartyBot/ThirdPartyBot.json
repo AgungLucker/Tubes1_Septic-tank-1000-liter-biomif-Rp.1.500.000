@@ -2,9 +2,9 @@
   "name": "Kelompok33",
   "version": "1.0",
   "authors": [
-    "Muhammad Aufa Farabi"
+    "Ferdinand Gabe T. S."
   ],
-  "description": "Banzai",
+  "description": "Bot selalu mencari zona dengan konsentrasi bot terbanyak dan zone terdekat dengan dirinya",
   "homepage": "",
   "countryCodes": [
     "id"
