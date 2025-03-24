@@ -8,7 +8,6 @@ public class ThirdPartyBot : Bot {
     private int gridWidthScaling;
     private int gridHeightScaling;
 
-    // First declare the dictionary
     internal Dictionary<(int, int), List<(double, double)>> playerZoneLoc = new Dictionary<(int, int), List<(double, double)>>();
     private TooNearWallCondition NearWallCond;
     private WallPanic panicWall;
@@ -123,47 +122,37 @@ public class ThirdPartyBot : Bot {
         }
     }
 
-    public override void OnHitBot(HitBotEvent e)
-    {
-    // Kurangi kecepatan saat terjadi tabrakan
-    MaxSpeed = 6;
+    public override void OnHitBot(HitBotEvent e){
+        MaxSpeed = 6;
 
-    // Hitung arah tabrakan
-    double tertabrak = CalcDegree(X, Y, e.X, e.Y);
-    double delta = (tertabrak - Direction + 360) % 360;
+        // Hitung arah tabrakan
+        double tertabrak = CalcDegree(X, Y, e.X, e.Y);
+        double delta = (tertabrak - Direction + 360) % 360;
 
-    Console.WriteLine($"Musuh NABRAK DI ARAH {tertabrak}");
-    Console.WriteLine($"Posisi SAYA DI ARAH {Direction}");
+        Console.WriteLine($"Musuh NABRAK DI ARAH {tertabrak}");
+        Console.WriteLine($"Posisi SAYA DI ARAH {Direction}");
 
-    // Menentukan dan melakukan manuver menghindar
-    if (delta >= 0 && delta < 90)  // Musuh dari depan kiri
-    {
-        Console.WriteLine("Musuh di Depan Kiri, berbelok kanan dan mundur!");
-        SetTurnRight(90);
-    }
-    else if (delta >= 90 && delta < 180)  // Musuh dari depan kanan
-    {
-        Console.WriteLine("Musuh di Depan Kanan, berbelok kiri dan mundur!");
-        SetTurnLeft(90);
-    }
-    else if (delta >= 180 && delta < 225)  // Musuh dari belakang kiri
-    {
-        Console.WriteLine("Musuh di Belakang Kiri, belok kanan dan maju!");
-        SetTurnRight(90);
-    }
-    else if (delta >= 225 && delta < 315)  // Musuh dari belakang kanan
-    {
-        Console.WriteLine("Musuh di Belakang Kanan, belok kiri dan maju!");
-        SetTurnLeft(90);
-    }
-    else  
-    {
-        Console.WriteLine("Musuh langsung di belakang, melakukan zig-zag!");
-        SetTurnRight(60);
-
-    }
-
-
+        // Menentukan arah menghindar
+        if (delta >= 0 && delta < 90){
+            Console.WriteLine("Musuh di Depan Kiri");
+            SetTurnRight(90);
+        }
+        else if (delta >= 90 && delta < 180) {
+            Console.WriteLine("Musuh di Depan Kanan");
+            SetTurnLeft(90);
+        }
+        else if (delta >= 180 && delta < 225){
+            Console.WriteLine("Musuh di Belakang Kiri");
+            SetTurnRight(90);
+        }
+        else if (delta >= 225 && delta < 315){
+            Console.WriteLine("Musuh di Belakang Kanan");
+            SetTurnLeft(90);
+        }
+        else  {
+            Console.WriteLine("Musuh langsung di belakang");
+            SetTurnRight(60);
+        }
         MaxSpeed = 8;
     }
 
@@ -175,8 +164,7 @@ public class ThirdPartyBot : Bot {
         int enemyZoneX = (int)(enemyPosX / gridWidthScaling);
         int enemyZoneY = (int)(enemyPosY / gridHeightScaling);
 
-        playerZoneLoc[(enemyZoneX, enemyZoneY)].Add((enemyPosX, enemyPosY));
-
+        playerZoneLoc[(enemyZoneX, enemyZoneY)].Add((enemyPosX, enemyPosY)); //update data
     }
 
     private void cleanUpData(){
@@ -185,14 +173,19 @@ public class ThirdPartyBot : Bot {
         }
     }
 
-
-
     public override void Run() {
+        BodyColor = Color.FromArgb(0x00, 0x00, 0x00);
+        TurretColor = Color.FromArgb(0x00, 0x00, 0x00);
+        RadarColor = Color.FromArgb(0x00, 0x00, 0x00);
+        BulletColor = Color.FromArgb(0x00, 0x00, 0x00);
+        ScanColor = Color.FromArgb(0x00, 0x00, 0x00);
+        TracksColor = Color.FromArgb(0x00, 0x00, 0x00);
+        GunColor = Color.FromArgb(0x00, 0x00, 0x00);
+
         AdjustGunForBodyTurn =true ;
         AdjustRadarForGunTurn = true;
         while (IsRunning) {
 
-            // Update data wall dan posisi
             isNearWall = NearWallCond.Test();
             distanceToLeftWall = X;
             distanceToRightWall = ArenaWidth - X;
@@ -203,14 +196,13 @@ public class ThirdPartyBot : Bot {
                 Math.Min(distanceToBottomWall, distanceToTopWall)
             );
             
-            // Atur flag berdasarkan posisi dinding
+         
             if (closestDistance == distanceToLeftWall || closestDistance == distanceToRightWall) {
                 isNearHorizontalWall = false;
             } else {
                 isNearHorizontalWall = true;
             }
 
-            // Logika untuk menghindari dinding
             if (isNearWall && !isTurningAwayFromWall && !panicWall.Test()) { 
                 MaxSpeed = 6; 
                 isTurningAwayFromWall = true;
@@ -236,8 +228,8 @@ public class ThirdPartyBot : Bot {
             if (TurnNumber % 8 == 0) {
                 List<(double, double)> zoneTerbanyak = new List<(double, double)>();
                 int count = 0;
-                (int, int) nearestZone = (0, 0); // Variabel untuk menyimpan zona terdekat
-                double minDistance = double.MaxValue; // Inisialisasi jarak minimum
+                (int, int) nearestZone = (0, 0); 
+                double minDistance = double.MaxValue; 
                 
                 foreach (var key in playerZoneLoc.Keys.ToList()) {
                     int playerCount = playerZoneLoc[key].Count();
@@ -284,13 +276,6 @@ public class ThirdPartyBot : Bot {
 
     }
 
-    private double NormalizeBearing(double angle)
-    {
-        while (angle > 180) angle -= 360;
-        while (angle < -180) angle += 360;
-        return angle;
-    }
-
     public double CalcDegree(double x1, double y1, double x2, double y2)
     {
         double dx = x2 - x1;
@@ -301,22 +286,18 @@ public class ThirdPartyBot : Bot {
         return degrees;
     }
 
-
     public override void OnCustomEvent(CustomEvent e) {
 
         if (e.Condition.Name == "WallVeryClose"){
             double sudutPantulPanic = 0;
             int myHitRobotPriority = GetEventPriority(e.GetType());
-            Console.WriteLine($"PANIK WOI ADA TEMBOKK, Priority {myHitRobotPriority}");
             if (isNearHorizontalWall) {
                 sudutPantulPanic =  getPantulHorizontal(Direction)>170 ? getPantulHorizontal(Direction) * 0.9:getPantulHorizontal(Direction) ;
-                Console.WriteLine($"Sudut datang: ({Direction}, Sudut pantul PANIK{sudutPantulPanic})");
-                SetTurnRight(sudutPantulPanic); // Apply the calculated angle here
+                SetTurnRight(sudutPantulPanic);
             }
             else {
                 sudutPantulPanic = getPantulVertical(Direction) > 170 ?  getPantulVertical(Direction) * 0.9: getPantulVertical(Direction) ;
-                Console.WriteLine($"Sudut datang: ({Direction}, Sudut pantul PANIK{sudutPantulPanic})");
-                SetTurnRight(sudutPantulPanic); // Apply the calculated angle here
+                SetTurnRight(sudutPantulPanic); 
             }
             MaxSpeed = 4;
             SetForward(200);
@@ -325,23 +306,17 @@ public class ThirdPartyBot : Bot {
         else if (e.Condition.Name == "TooNearWithWall") {
             double sudutPantul = 0;
             int myHitRobotPriority = GetEventPriority(e.GetType());
-            Console.WriteLine($"BIASA ADA TEMBOKK, Priority {myHitRobotPriority}");
             if (isNearHorizontalWall) {
                 sudutPantul =  getPantulHorizontal(Direction) >170 ? getPantulHorizontal(Direction) * 0.9:getPantulHorizontal(Direction) ;
-                SetTurnRight(sudutPantul); // Apply the calculated angle here
+                SetTurnRight(sudutPantul);
             }
             else {
                 sudutPantul = getPantulVertical(Direction) >170 ? getPantulVertical(Direction) * 0.9:getPantulVertical(Direction) ;
-                SetTurnRight(sudutPantul); // Apply the calculated angle here
+                SetTurnRight(sudutPantul);
             }
             
             SetForward(200);
             Go();
-        }
-        
-        else if (e.Condition.Name == "EnemyIsTooClose") {
-            Console.WriteLine("Musuh terlalu dekat! Menghindar...");
-
         }
     }
 }
@@ -385,24 +360,4 @@ public class WallPanic : Condition {
 
 }
 
-    public class EnemyTooCloseCondition : Condition {
-        private ThirdPartyBot bot;
-        private const int DangerDistance = 150; 
-
-        public EnemyTooCloseCondition(ThirdPartyBot bot) : base("EnemyIsTooClose") {
-            this.bot = bot;
-        }
-
-        public override bool Test() {
-            foreach (var enemyList in bot.playerZoneLoc.Values) {
-                foreach (var enemy in enemyList) {
-                    double distance = Math.Sqrt(Math.Pow(enemy.Item1 - bot.X, 2) + Math.Pow(enemy.Item2 - bot.Y, 2));
-                    if (distance < DangerDistance) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-    }
 

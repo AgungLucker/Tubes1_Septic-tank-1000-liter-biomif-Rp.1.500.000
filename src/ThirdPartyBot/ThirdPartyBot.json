@@ -1,16 +1,16 @@
 {
-  "name": "WhoBot",
+  "name": "Kelompok 33",
   "version": "1.0",
   "authors": [
-    "Mathew Nelson",
-    "Flemming N. Larsen"
+      "M. Aufa Farabi",
+      "Ferdinand Gabe T. S.",
+      "M. Iqbal Haidar"
   ],
-  "description": "Example bot of how to use turn rates",
+  "description": "Bot selalu mencari zona dengan konsentrasi bot terbanyak dan zone terdekat dengan dirinya",
   "homepage": "",
   "countryCodes": [
-    "ie",
-    "dk"
+      "id"
   ],
-  "platform": ".Net 6.0",
-  "programmingLang": "C# 10.0"
+  "platform": ".Net 9.0",
+  "programmingLang": "C#"
 }
