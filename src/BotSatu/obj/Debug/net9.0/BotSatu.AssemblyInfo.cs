@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BotSatu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b2806114bdb862eb5845006de64ddcd09f762f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("BotSatu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BotSatu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\tubes1-if2211-starter-pack-1.0\\Sampleofbot\\ThirdPartyBot\\ThirdPartyBot.csproj": {}
+    "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\Tubes1_Septic-tank-1000-liter-biomif-Rp.1.500.000\\src\\ThirdPartyBot\\ThirdPartyBot.csproj": {}
   },
   "projects": {
-    "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\tubes1-if2211-starter-pack-1.0\\Sampleofbot\\ThirdPartyBot\\ThirdPartyBot.csproj": {
+    "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\Tubes1_Septic-tank-1000-liter-biomif-Rp.1.500.000\\src\\ThirdPartyBot\\ThirdPartyBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\tubes1-if2211-starter-pack-1.0\\Sampleofbot\\ThirdPartyBot\\ThirdPartyBot.csproj",
+        "projectUniqueName": "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\Tubes1_Septic-tank-1000-liter-biomif-Rp.1.500.000\\src\\ThirdPartyBot\\ThirdPartyBot.csproj",
         "projectName": "ThirdPartyBot",
-        "projectPath": "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\tubes1-if2211-starter-pack-1.0\\Sampleofbot\\ThirdPartyBot\\ThirdPartyBot.csproj",
+        "projectPath": "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\Tubes1_Septic-tank-1000-liter-biomif-Rp.1.500.000\\src\\ThirdPartyBot\\ThirdPartyBot.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\tubes1-if2211-starter-pack-1.0\\Sampleofbot\\ThirdPartyBot\\obj\\",
+        "outputPath": "D:\\Codes\\SEMESTER4IF\\Codes\\C#\\Tubes1_Septic-tank-1000-liter-biomif-Rp.1.500.000\\src\\ThirdPartyBot\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"

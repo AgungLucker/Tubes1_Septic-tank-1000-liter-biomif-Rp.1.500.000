@@ -1,16 +1,12 @@
 {
-  "name": "Kelompok 33",
+  "name": "ThirdPartyBot",
   "version": "1.0",
-  "authors": [
-      "M. Aufa Farabi",
-      "Ferdinand Gabe T. S.",
-      "M. Iqbal Haidar"
-  ],
+  "authors": ["Ferdinand Gabe T. S."],
   "description": "Bot selalu mencari zona dengan konsentrasi bot terbanyak dan zone terdekat dengan dirinya",
   "homepage": "",
   "countryCodes": [
       "id"
   ],
-  "platform": ".Net 9.0",
-  "programmingLang": "C#"
+  "platform": ".Net 6.0",
+  "programmingLang": "C# 10.0"
 }

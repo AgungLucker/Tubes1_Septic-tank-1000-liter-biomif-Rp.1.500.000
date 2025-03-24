@@ -1,8 +1,8 @@
 {
-  "name": "33",
+  "name": "KamikazeBot",
   "version": "1.0",
-  "authors": ["Muhammad Aufa Farabi", "Ferdinand Gabe Tua Sinaga", "Muhammad Iqbal Haidar"],
-  "description": "Bot yang memakai strategy greedy yang dinamakan Kamikaze, yakni berusaha menabrak target bot yang memiliki energi terbesar tetapi di bawah 90 ",
+  "authors": ["Muhammad Aufa Farabi"],
+  "description": "Banzai",
   "homepage": "",
   "countryCodes": ["id"],
   "platform": ".Net 6.0",
