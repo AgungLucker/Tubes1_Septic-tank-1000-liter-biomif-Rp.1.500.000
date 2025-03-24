@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Robocode.TankRoyale.BotApi;
 using Robocode.TankRoyale.BotApi.Events;
 using System.Linq;
+using System.Drawing;
 
 public class ThirdPartyBot : Bot {
     private int gridWidthScaling;
