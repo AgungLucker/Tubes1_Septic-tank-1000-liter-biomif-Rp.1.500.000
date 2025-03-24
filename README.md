@@ -4,8 +4,8 @@
 
 ### Penjelasan singkat algoritma greedy yang diimplementasikan
 1. Coward Bot : Bot selalu menjauhi lokasi musuh dan tidak pernah menembak kecuali ditabrak/musuh tersisa satu
-2. Kamikaze Bot : 
-3. ThirdParty Bot : 
+2. Kamikaze Bot : Bot yang berusaha menabrak bot musuh dengan energy terbesar yang ditarget secara lock-in
+3. ThirdParty Bot : Bot yang menarget kerumunan bot musuh dalam satu zona
 4. Nearest Bot : Bot selalu menembak musuh terdekat dan selalu bergerak ke arah random
 
 ### Requirement
