@@ -1,0 +1,16 @@
+{
+    "name": "CowardBot",
+    "version": "1.0",
+    "authors": [
+        "M. Aufa Farabi",
+        "Ferdinand Gabe T. S.",
+        "M. Iqbal Haidar"
+    ],
+    "description": "Bot selalu menjauhi lokasi musuh dan tidak pernah menembak kecuali ditabrak/musuh tersisa satu",
+    "homepage": "",
+    "countryCodes": [
+        "id"
+    ],
+    "platform": ".Net 9.0",
+    "programmingLang": "C#"
+}
